@@ -3,71 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Bank - Egyptian Board Game</title>
+    <title>Lucky Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="top-hud">
+    <div class="top-hud">
         <div class="hud-left">
-            <button id="settingsBtn" class="btn-settings">Settings </button>
-        </div>
-
-        <div class="hud-right">
-            <div class="hud-box time-box">
-                <span class="hud-title">Time</span>
-                <span id="gameTimer" class="hud-value">00:00:00</span>
-            </div>
-            <div class="hud-box debt-box">
-                <span class="hud-title">عليك</span>
-                <span id="debtValue" class="hud-value">1.500</span>
-            </div>
-            <div class="hud-box cash-box">
-                <span class="hud-title">معاك</span>
+            <div class="hud-box">
+                <span class="hud-label">معاك</span>
                 <span id="cashValue" class="hud-value">10.000</span>
             </div>
-        </div>
-    </header>
-
-    <main class="game-container">
-        <div class="map-wrapper">
-            <div class="map-header">خريطة اللعبة - Lucky Bank</div>
-            <div class="board-map" id="boardMap">
-                <div class="pyramid p1"></div>
-                <div class="pyramid p2"></div>
-                <div class="nile-river"></div>
-
-                <div class="controls-overlay">
-                    <button id="rollDiceBtn" class="btn-dice"> رمي النرد</button>
-                    <div id="diceResult" class="dice-result">-</div>
-                </div>
+            <div class="hud-box debt-box">
+                <span class="hud-label">عليك</span>
+                <span id="debtValue" class="hud-value">1.500</span>
+            </div>
+            <div class="hud-box time-box">
+                <span class="hud-label">Time</span>
+                <span id="gameTimer" class="hud-value">00:00:00</span>
             </div>
         </div>
+        <button id="settingsBtn" class="btn-settings">Settings</button>
+    </div>
 
-        <section class="leaderboard-section">
-            <h2>لوحة الترتيب (Leaderboard)</h2>
-            <div id="leaderboardList" class="leaderboard-list">
-            </div>
-        </section>
-    </main>
-
-    <div id="settingsModal" class="modal-backdrop hidden">
-        <div class="modal-card settings-card">
-            <h3>Settings</h3>
-            <button id="audioBtn" class="btn-menu"> Audio</button>
-            <button id="graphicsBtn" class="btn-menu"> Graphics</button>
-            <button id="exitBtn" class="btn-menu btn-danger"> Exit to main menu</button>
-            <button id="closeSettingsBtn" class="btn-close">إغلاق</button>
+    <div class="game-container">
+        <div class="board-header">Lucky Bank</div>
+        <div class="board-grid" id="boardGrid">
+            <!-- سيتم توليد المدن تلقائياً بواسطة JavaScript -->
         </div>
     </div>
 
-    <div id="exitConfirmModal" class="modal-backdrop hidden">
-        <div class="modal-card confirm-card">
-            <h3>Are you sure?</h3>
+    <div class="leaderboard-container">
+        <div class="board-header">Leaderboard</div>
+        <div id="leaderboardList" class="leaderboard-list"></div>
+    </div>
+
+    <!-- نافذة الشراء والبناء -->
+    <div id="actionModal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <h3 id="actionTitle">تفاصيل المدينة</h3>
+            <p id="actionDesc"></p>
+            <div class="modal-actions">
+                <button id="btnBuyCity" class="btn-action btn-yes hidden">شراء المدينة</button>
+                <button id="btnBuildProject" class="btn-action btn-yes hidden">بناء مشروع</button>
+                <button id="btnMakeOffer" class="btn-action btn-menu hidden">تقديم عرض شراء</button>
+                <button id="btnCloseAction" class="btn-menu">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تقديم عرض شراء -->
+    <div id="offerModal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <h3>تقديم عرض شراء</h3>
+            <p id="offerTargetText"></p>
+            <input type="number" id="offerPriceInput" placeholder="ادخل المبلغ المعروض" class="input-field">
             <div class="confirm-actions">
-                <button id="confirmYesBtn" class="btn-action btn-yes"> Yes</button>
-                <button id="confirmNoBtn" class="btn-action btn-no"> No</button>
+                <button id="btnSendOffer" class="btn-action btn-yes">إرسال العرض</button>
+                <button id="btnCancelOffer" class="btn-action btn-no">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الاستجابة للعرض (قبول / رفض) -->
+    <div id="negotiateModal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <h3>عرض شراء مقدم لك!</h3>
+            <p id="negotiateText"></p>
+            <div class="confirm-actions">
+                <button id="btnAcceptOffer" class="btn-action btn-yes">قبول البيع</button>
+                <button id="btnRejectOffer" class="btn-action btn-no">رفض</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <h3>الإعدادات</h3>
+            <button id="exitBtn" class="btn-menu btn-danger">خروج من اللعبة</button>
+            <button id="closeSettingsBtn" class="btn-menu">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- Exit Confirm Modal -->
+    <div id="exitConfirmModal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <h3>هل أنت متأكد من الخروج؟</h3>
+            <div class="confirm-actions">
+                <button id="confirmYesBtn" class="btn-action btn-yes">نعم</button>
+                <button id="confirmNoBtn" class="btn-action btn-no">لا</button>
             </div>
         </div>
     </div>
