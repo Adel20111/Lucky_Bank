@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Bank - Egyptian Board Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="top-hud">
+        <div class="hud-left">
+            <button id="settingsBtn" class="btn-settings">Settings </button>
+        </div>
+
+        <div class="hud-right">
+            <div class="hud-box time-box">
+                <span class="hud-title">Time</span>
+                <span id="gameTimer" class="hud-value">00:00:00</span>
+            </div>
+            <div class="hud-box debt-box">
+                <span class="hud-title">عليك</span>
+                <span id="debtValue" class="hud-value">1.500</span>
+            </div>
+            <div class="hud-box cash-box">
+                <span class="hud-title">معاك</span>
+                <span id="cashValue" class="hud-value">10.000</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="game-container">
+        <div class="map-wrapper">
+            <div class="map-header">خريطة اللعبة - Lucky Bank</div>
+            <div class="board-map" id="boardMap">
+                <div class="pyramid p1"></div>
+                <div class="pyramid p2"></div>
+                <div class="nile-river"></div>
+
+                <div class="controls-overlay">
+                    <button id="rollDiceBtn" class="btn-dice"> رمي النرد</button>
+                    <div id="diceResult" class="dice-result">-</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="leaderboard-section">
+            <h2>لوحة الترتيب (Leaderboard)</h2>
+            <div id="leaderboardList" class="leaderboard-list">
+            </div>
+        </section>
+    </main>
+
+    <div id="settingsModal" class="modal-backdrop hidden">
+        <div class="modal-card settings-card">
+            <h3>Settings</h3>
+            <button id="audioBtn" class="btn-menu"> Audio</button>
+            <button id="graphicsBtn" class="btn-menu"> Graphics</button>
+            <button id="exitBtn" class="btn-menu btn-danger"> Exit to main menu</button>
+            <button id="closeSettingsBtn" class="btn-close">إغلاق</button>
+        </div>
+    </div>
+
+    <div id="exitConfirmModal" class="modal-backdrop hidden">
+        <div class="modal-card confirm-card">
+            <h3>Are you sure?</h3>
+            <div class="confirm-actions">
+                <button id="confirmYesBtn" class="btn-action btn-yes"> Yes</button>
+                <button id="confirmNoBtn" class="btn-action btn-no"> No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
