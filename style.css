@@ -1,8 +1,8 @@
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Cairo', sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
 }
 
 body {
@@ -26,166 +26,159 @@ body {
 
 .hud-left {
     display: flex;
+    gap: 10px;
+}
+
+.hud-box {
+    background: #ffffff;
+    border: 2px solid #2c221e;
+    border-radius: 8px;
+    padding: 6px 14px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.hud-box .hud-label {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.hud-box .hud-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #16a34a;
+}
+
+.debt-box .hud-value {
+    color: #dc2626;
+}
+
+.time-box .hud-value {
+    color: #2563eb;
 }
 
 .btn-settings {
     background: #d4a359;
     color: #1a1a1a;
     border: 2px solid #8b5a2b;
-    padding: 10px 18px;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 8px 16px;
     border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-settings:hover {
-    background: #c39248;
-}
-
-.hud-right {
-    display: flex;
-    gap: 12px;
-}
-
-.hud-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 100px;
-    padding: 6px 14px;
-    border-radius: 8px;
-    border: 2px solid #333;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-}
-
-.hud-title {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 2px;
-}
-
-.hud-value {
-    font-size: 18px;
-    font-weight: 900;
-}
-
-.time-box {
-    background-color: #e2e8f0;
-    border-color: #64748b;
-    color: #0f172a;
-}
-
-.debt-box {
-    background-color: #a82323;
-    border-color: #610d0d;
-    color: #ffffff;
-}
-
-.cash-box {
-    background-color: #1b7a3e;
-    border-color: #0a421f;
-    color: #ffffff;
+    background: #c3924a;
 }
 
 .game-container {
     width: 100%;
     max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.map-wrapper {
     background: #ffffff;
     border: 3px solid #2c221e;
     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
-.map-header {
-    background: #2c221e;
-    color: #ffffff;
+.board-header {
     text-align: center;
-    padding: 8px;
-    font-weight: bold;
     font-size: 18px;
+    font-weight: bold;
+    background: #d4a359;
+    color: #2c221e;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 2px solid #8b5a2b;
 }
+
 .board-map {
     position: relative;
     width: 100%;
-    height: 420px;
-    background: #e6c894;
-    border-top: 2px solid #2c221e;
+    height: 320px;
+    background-color: #e5d3b3;
+    border: 2px solid #2c221e;
+    border-radius: 8px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.nile-river {
+.map-bg {
     position: absolute;
-    width: 70px;
+    width: 100%;
     height: 100%;
-    background: #3b82f6;
-    left: 20%;
-    opacity: 0.7;
-    transform: rotate(15deg);
+}
+
+.river {
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    background-color: #3b82f6;
+    left: 45%;
+    transform: rotate(15deg) scaleY(1.2);
 }
 
 .pyramid {
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 45px solid transparent;
-    border-right: 45px solid transparent;
-    border-bottom: 75px solid #d97706;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid #d97706;
 }
 
 .pyramid.p1 {
-    top: 20px;
-    right: 40px;
+    top: 50px;
+    right: 60px;
 }
 
 .pyramid.p2 {
-    bottom: 30px;
-    left: 40px;
+    bottom: 40px;
+    left: 60px;
 }
-.controls-overlay {
-    position: absolute;
-    bottom: 20px;
+
+.dice-section {
+    position: relative;
+    z-index: 10;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 2px solid #2c221e;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 12px 20px;
-    border-radius: 10px;
-    border: 2px solid #8b5a2b;
 }
 
-.btn-dice {
-    background: #d4a359;
-    border: 1px solid #8b5a2b;
-    padding: 8px 16px;
-    font-weight: bold;
-    font-size: 15px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.dice-result {
-    font-size: 20px;
+.dice-display {
+    font-size: 16px;
     font-weight: bold;
 }
 
-.leaderboard-section {
+.leaderboard-container {
+    width: 100%;
+    max-width: 900px;
     background: #ffffff;
     border: 3px solid #2c221e;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .player-card {
     display: flex;
     justify-content: space-between;
@@ -221,6 +214,7 @@ body {
     display: inline-block;
 }
 
+/* إخفاء القوائم حتى يتم التفاعل مع الأزرار */
 .modal-backdrop {
     position: fixed;
     top: 0;
@@ -233,8 +227,9 @@ body {
     align-items: center;
     z-index: 999;
 }
+
 .modal-backdrop.hidden {
-    display: none;
+    display: none !important;
 }
 
 .modal-card {
@@ -247,7 +242,6 @@ body {
     flex-direction: column;
     gap: 12px;
     text-align: center;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
 }
 
 .btn-menu {
@@ -270,18 +264,6 @@ body {
     color: #991b1b;
 }
 
-.btn-danger:hover {
-    background: #fecaca;
-}
-
-.btn-close {
-    background: transparent;
-    border: none;
-    color: #6b7280;
-    cursor: pointer;
-    margin-top: 5px;
-}
-
 .confirm-actions {
     display: flex;
     justify-content: space-around;
@@ -302,14 +284,6 @@ body {
     background-color: #16a34a;
 }
 
-.btn-yes:hover {
-    background-color: #15803d;
-}
-
 .btn-no {
     background-color: #dc2626;
-}
-
-.btn-no:hover {
-    background-color: #b91c1c;
 }
