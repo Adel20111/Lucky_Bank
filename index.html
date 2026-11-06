@@ -29,8 +29,16 @@
 
     <div class="game-container">
         <div class="board-header">Lucky Bank</div>
-        <div class="board-grid" id="boardGrid">
-            <!-- سيتم توليد المدن تلقائياً بواسطة JavaScript -->
+        <div class="board-map">
+            <div class="map-bg">
+                <div class="river"></div>
+                <div class="pyramid p1"></div>
+                <div class="pyramid p2"></div>
+            </div>
+            <div class="dice-section">
+                <button id="rollDiceBtn" class="btn-action btn-yes">رمي النرد</button>
+                <div id="diceResult" class="dice-display">-</div>
+            </div>
         </div>
     </div>
 
@@ -39,46 +47,7 @@
         <div id="leaderboardList" class="leaderboard-list"></div>
     </div>
 
-    <!-- نافذة الشراء والبناء -->
-    <div id="actionModal" class="modal-backdrop hidden">
-        <div class="modal-card">
-            <h3 id="actionTitle">تفاصيل المدينة</h3>
-            <p id="actionDesc"></p>
-            <div class="modal-actions">
-                <button id="btnBuyCity" class="btn-action btn-yes hidden">شراء المدينة</button>
-                <button id="btnBuildProject" class="btn-action btn-yes hidden">بناء مشروع</button>
-                <button id="btnMakeOffer" class="btn-action btn-menu hidden">تقديم عرض شراء</button>
-                <button id="btnCloseAction" class="btn-menu">إغلاق</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- نافذة تقديم عرض شراء -->
-    <div id="offerModal" class="modal-backdrop hidden">
-        <div class="modal-card">
-            <h3>تقديم عرض شراء</h3>
-            <p id="offerTargetText"></p>
-            <input type="number" id="offerPriceInput" placeholder="ادخل المبلغ المعروض" class="input-field">
-            <div class="confirm-actions">
-                <button id="btnSendOffer" class="btn-action btn-yes">إرسال العرض</button>
-                <button id="btnCancelOffer" class="btn-action btn-no">إلغاء</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- نافذة الاستجابة للعرض (قبول / رفض) -->
-    <div id="negotiateModal" class="modal-backdrop hidden">
-        <div class="modal-card">
-            <h3>عرض شراء مقدم لك!</h3>
-            <p id="negotiateText"></p>
-            <div class="confirm-actions">
-                <button id="btnAcceptOffer" class="btn-action btn-yes">قبول البيع</button>
-                <button id="btnRejectOffer" class="btn-action btn-no">رفض</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Settings Modal -->
+    <!-- نافذة الإعدادات (تستجيب فقط للضغط على زر Settings) -->
     <div id="settingsModal" class="modal-backdrop hidden">
         <div class="modal-card">
             <h3>الإعدادات</h3>
@@ -87,7 +56,7 @@
         </div>
     </div>
 
-    <!-- Exit Confirm Modal -->
+    <!-- نافذة تأكيد الخروج -->
     <div id="exitConfirmModal" class="modal-backdrop hidden">
         <div class="modal-card">
             <h3>هل أنت متأكد من الخروج؟</h3>
